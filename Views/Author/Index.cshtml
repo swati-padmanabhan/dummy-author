@@ -1,0 +1,44 @@
+﻿@model IEnumerable<LoginAuthorDemo.Models.Author>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+    <h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+            <th>@Html.DisplayNameFor(model => model.Email)</th>
+            <th>@Html.DisplayNameFor(model => model.Age)</th>
+            <th>@Html.DisplayNameFor(model => model.AuthorDetails.Street)</th>
+            <th>@Html.DisplayNameFor(model => model.AuthorDetails.City)</th>
+            <th>@Html.DisplayNameFor(model => model.AuthorDetails.State)</th>
+            <th>@Html.DisplayNameFor(model => model.AuthorDetails.Country)</th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.Age)</td>
+                <td>@Html.DisplayFor(modelItem => item.AuthorDetails.Street)</td>
+                <td>@Html.DisplayFor(modelItem => item.AuthorDetails.City)</td>
+                <td>@Html.DisplayFor(modelItem => item.AuthorDetails.State)</td>
+                <td>@Html.DisplayFor(modelItem => item.AuthorDetails.Country)</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Book Details", "BookDetails", "Book", new { authorId = item.Id }, null) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
